@@ -131,8 +131,10 @@ function removeClassToAllRegionPath(nomClass){
 #svg-carte path.erreur-region{
 	fill: rgba(0,0,0,0.9);
 }
-#svg-carte path:hover{
-	fill: rgba(0,0,0,0.5);
+@media(hover: hover) and (pointer: fine) {
+	#svg-carte path:hover{
+		fill: rgba(0,0,0,0.5);
+	}
 }
 
 #notif {
