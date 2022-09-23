@@ -1,5 +1,6 @@
 <html>
 <head>
+<link rel="stylesheet" href="geographie.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 /*
@@ -162,93 +163,14 @@ function removeClassToAllRegionPath(nomClass){
 	});
 }
 </script>
-<style>
-#entete {
-	margin-bottom: 1em;
-}
 
-#carte-et-svg {
-	position: relative;
-}
-
-#carte {	
-	position:absolute;
-	z-index: 1;
-}
-#svg-carte {
-	position:absolute;
-	z-index: 2;
-}
-#svg-carte path{
-	pointer-events:none;
-	stroke-width:0;	
-}
-#svg-carte.started path{
-	pointer-events:all;
-}
-#svg-carte path.erreur-region{
-	fill: rgba(0,0,0,0.9);
-}
-@media(hover: hover) and (pointer: fine) {
-	#svg-carte path:hover{
-		fill: rgba(0,0,0,0.5);
-	}
-}
-
-#notif {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 3;
-	pointer-events:none;
-    font-size: 177px;
-    color: red;
-    display: none;
-    text-align: center;
-}
-#notif.erreur {
-	display: block;
-	color: red;
-}
-#notif.erreur:after {
-	content: "X";
-}
-#notif.succes {
-	display: block;
-	color: green;
-	animation: fadeOut 1s;
-}
-#notif.succes:after {
-	content : "\2713";
-}
-#notif.complet {
-	display: block;
-	color: green;
-	animation: fadeOut 1s;
-}
-#notif.complet:after {
-	content : "Bravo";
-}
-
-#carte-resultat {
-	display: flex;
-}
-
-.reussi {
-	background-color: #8ce98c;
-}
-</style>
 </head>
 <body onload="chargement();">
 <div id="contenant">
 	<div id="entete">
-		<button type="button" onclick="start()">Commencer</button>
-		<span id="element-a-trouver"></span>
+		<button type="button" class="button" onclick="start()">Commencer</button>
 	</div>
-	<div id="statut">
-		<span>Succes : </span><span id="succes"></span>
-		<span>Erreur : </span><span id="erreur"></span>
-	</div>
+	<span id="element-a-trouver"></span>
 	<div id="carte-resultat">
 		<div id="carte-et-svg" style="width:706px; height:470px; ">
 			<div id="notif"></div>
@@ -501,7 +423,7 @@ function removeClassToAllRegionPath(nomClass){
 						 156.69,282.74 149.44,285.63 143.00,287.00
 						 137.22,288.24 127.77,294.39 125.60,300.04
 						 124.75,302.25 125.00,308.37 125.00,311.00 Z" />
-			  <path id="11 - Gaspésie-Île-de-laMadelaine"
+			  <path id="11 - Gaspésie-Île-de-la-Madelaine"
 					fill="none" stroke="black" stroke-width="1"
 					d="M 494.00,206.00
 					   C 499.13,214.48 500.07,209.85 506.00,214.31
@@ -693,6 +615,10 @@ function removeClassToAllRegionPath(nomClass){
 		</div>
 		<div id="tableau-reussi">
 		</div>
+	</div>
+	<div id="statut">
+		<span>Succes : </span><span id="succes"></span>
+		<span>Erreur : </span><span id="erreur"></span>
 	</div>
 </div>
 </body>
