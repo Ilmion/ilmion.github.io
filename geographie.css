@@ -1,0 +1,97 @@
+#entete {
+	margin-bottom: 1em;
+}
+
+#element-a-trouver {
+	font-size: 2em;
+}
+
+#carte-et-svg {
+	position: relative;
+}
+
+#carte {	
+	position:absolute;
+	z-index: 1;
+}
+#svg-carte {
+	position:absolute;
+	z-index: 2;
+}
+#svg-carte path{
+	pointer-events:none;
+	stroke-width:0;	
+}
+#svg-carte.started path{
+	pointer-events:all;
+}
+#svg-carte path.erreur-region{
+	fill: rgba(0,0,0,0.9);
+}
+@media(hover: hover) and (pointer: fine) {
+	#svg-carte path:hover{
+		fill: rgba(0,0,0,0.5);
+	}
+}
+
+#notif {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	pointer-events:none;
+    font-size: 177px;
+    color: red;
+    display: none;
+    text-align: center;
+}
+#notif.erreur {
+	display: block;
+	color: red;
+}
+#notif.erreur:after {
+	content: "X";
+}
+#notif.succes {
+	display: block;
+	color: green;
+	animation: fadeOut 1s;
+}
+#notif.succes:after {
+	content : "\2713";
+}
+#notif.complet {
+	display: block;
+	color: green;
+	animation: fadeOut 1s;
+}
+#notif.complet:after {
+	content : "Bravo";
+}
+
+#carte-resultat {
+	display: flex;
+}
+
+.reussi {
+	background-color: #8ce98c;
+}
+
+#tableau-reussi {
+	margin-left: 1em;
+}
+
+.button  {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+	
+#statut {
+	margin-top: 1em;
+}
