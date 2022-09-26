@@ -1,0 +1,250 @@
+<html>
+<head>
+<link rel="stylesheet" href="geotrouveur.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+/*
+ progression
+ chargement svg en dehors
+ 
+ feature requests :
+	- laisser la région qu'on a réussi visible en même temps que le crochet.
+ 
+ Test local avec : python -m http.server
+*/
+
+var nomLocalStorage = 'ilmion.geographie';
+var currentVersion = '1';
+var listElementComplet = [];
+var listElementATrouver = [];
+var elementATrouver = null;
+var succes = 0;
+var erreur = 0;
+var lastNotif = null;
+
+
+var geographie = undefined;
+
+function chargement(){
+	//geographie = localStorage.getItem(nomLocalStorage);
+	/*if(geographie == undefined) {
+		geographie = {};
+		geographie.version = currentVersion;
+		console.log('geographie', geographie);
+		localStorage.setItem(nomLocalStorage, JSON.stringify(geographie));
+	}
+	var testGeo = JSON.parse(localStorage.getItem(nomLocalStorage));
+	console.log('testGeo', testGeo);*/
+	
+	declancherChaineDeChargement();
+}
+
+function declancherChaineDeChargement() {
+	var theCachedImage = new Image();
+	theCachedImage.id = "img-carte";
+	$(theCachedImage).on( "load", onImageCharger );
+	theCachedImage.src = 'jeux/Regions Administratives.gif';
+}
+
+function onImageCharger(e){
+	$('#img-carte').append(e.target);
+	$.ajax('jeux/Regions Administratives.html', { success: function(response) { onSVGCharger(response, e.target) } } );
+}
+
+function onSVGCharger(response, image) {
+	$('#svg-carte').empty();
+	$('#svg-carte').html(response);
+	$('#svg-carte svg').attr('width', image.width);
+	$('#svg-carte svg').attr('height', image.height);
+	$('#carte-et-svg').css('width', image.width);
+	$('#carte-et-svg').css('height', image.height);
+	
+	chargerJeu();
+}
+
+function chargerJeu(){
+	initListElementComplet();
+}
+
+function initListElementComplet() {
+	listElementComplet = [];
+	$('#svg-carte svg').children('path').each(function () {
+		listElementComplet.push($(this).attr('id'));
+	});
+	listElementComplet.sort();
+}
+
+function initListElementATrouver() {
+	listElementATrouver = [];
+	for(var element of listElementComplet) {
+		listElementATrouver.push(element);
+	}
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function removeAllClick(){
+	$('#svg-carte svg').children('path').each(function () {
+		$(this).off('click');
+	});
+}
+
+function start(){
+	retirerDernierNotif();
+
+	initListElementATrouver();
+	construireTableauReussi();
+	
+	shuffleArray(listElementATrouver);
+	elementATrouver = listElementATrouver.shift();
+	
+	removeAllClick();
+	$('#svg-carte svg').children('path').each(function () {
+		var idRegion = $(this).attr('id');
+		$(this).click(function() {
+			regionClick(idRegion);
+		});
+	});
+	
+	$('#svg-carte').addClass('started');
+	$('#element-a-trouver').html(elementATrouver);
+	$('#succes').html(succes);
+	$('#erreur').html(erreur);
+	
+	$('#btn-start').html('Recommencer');
+}
+
+function construireTableauReussi() {
+	$('#tableau-reussi').empty();
+	$('#tableau-reussi').append('<table>');
+	for(var element of listElementATrouver){
+		$('#tableau-reussi').append('<tr><td><span id="reussi-' + element + '">' + element + '</span></td></tr>');
+	
+	$('#tableau-reussi').append('</table>');}
+	$('#tableau-reussi')
+}
+
+function startParEtape(){
+
+}
+
+function regionClick(regionChoisi){
+	if(elementATrouver != null) {
+		if(regionChoisi == elementATrouver) {
+			succes++;
+			$('#succes').html(succes);
+			
+			removeClassToAllRegionPath('erreur-region');
+			var idReussi = "span[id='reussi-" + regionChoisi + "']";
+			$(idReussi).addClass('reussi');
+			
+			const index = listElementATrouver.indexOf(elementATrouver);
+			if (index > -1) {
+				listElementATrouver.splice(index, 1);
+			}
+			if(listElementATrouver.length == 0){
+				succes = 0;
+				erreur = 0;
+				$('#svg-carte').removeClass('started');
+				$('#element-a-trouver').empty();
+				afficherNotif("complet", null, true);
+			}
+			else {
+				afficherNotif('succes', function() {
+					elementATrouver = listElementATrouver[Math.floor(Math.random()*listElementATrouver.length)];
+					console.log('Element a trouver' + elementATrouver);
+					$('#element-a-trouver').html(elementATrouver);
+				});				
+			}
+		}
+		else {
+			erreur++;
+			$('#erreur').html(erreur);	
+			addClassToRegionPath(regionChoisi, 'erreur-region');
+			afficherNotif('erreur');
+			
+		}
+	}
+}
+
+function afficherNotif(notifType, callback=null, stay=false){
+	lastNotif = notifType;
+	$('#notif').addClass(notifType);
+	$('#svg-carte').removeClass('started');
+	if(!stay){
+		setTimeout(function() {
+				retirerDernierNotif();
+				$('#svg-carte').addClass('started');
+				if(callback != null) {
+					callback();
+				}
+			}, 1000);
+	}
+}
+
+function retirerDernierNotif(){
+	if(lastNotif != null){
+		$('#notif').removeClass(lastNotif);
+		lastNotif = null;
+	}
+}
+
+function addClassToRegionPath(idRegion, nomClass){
+	$('#svg-carte svg').children('path').each(function () {
+		if($(this).attr('id') == idRegion) {
+			var newClass = $(this).attr('class') + ' ' + nomClass; 
+			$(this).attr('class', newClass);
+		}
+	});
+}
+
+function removeClassToRegionPath(idRegion, nomClass){
+	$('#svg-carte svg').children('path').each(function () {
+		if($(this).attr('id') == idRegion) {
+			var newClass = $(this).attr('class').replace(nomClass, '').trim();
+			$(this).attr('class', newClass);
+		}
+	});
+}
+
+function removeClassToAllRegionPath(nomClass){
+	$('#svg-carte svg').children('path').each(function () {
+		var actualClass = $(this).attr('class');
+		if(actualClass != undefined) {
+			console.log('actual', actualClass);
+			var newClass = $(this).attr('class').replace(nomClass, '').trim();
+			console.log('newClass',newClass);
+			$(this).attr('class', newClass);
+		}
+	});
+}
+</script>
+
+</head>
+<body onload="chargement();">
+	<div id="contenant">
+		<div id="entete">
+			<button id="btn-start" type="button" class="button" onclick="start()">Commencer partie simple</button>
+			<!--<button type="button" class="button" onclick="startParEtape()">Débuter apprentissage par étape</button>-->
+		</div>
+		<span id="element-a-trouver"></span>
+		<div id="carte-resultat">
+			<div id="carte-et-svg">
+				<div id="notif"></div>
+				<div id="img-carte"></div>
+				<div id="svg-carte"></div>
+			</div>
+			<div id="tableau-reussi"></div>
+		</div>
+		<div id="statut">
+			<span>Succes : </span><span id="succes"></span>
+			<span>Erreur : </span><span id="erreur"></span>
+		</div>	
+	</div>
+</body>
+</html>

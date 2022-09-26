@@ -10,14 +10,16 @@
 	position: relative;
 }
 
-#carte {	
+#img-carte {	
 	position:absolute;
 	z-index: 1;
 }
+
 #svg-carte {
 	position:absolute;
 	z-index: 2;
 }
+
 #svg-carte path{
 	pointer-events:none;
 	stroke-width:0;	
@@ -41,7 +43,6 @@
 	z-index: 3;
 	pointer-events:none;
     font-size: 177px;
-    color: red;
     display: none;
     text-align: center;
 }
@@ -55,7 +56,6 @@
 #notif.succes {
 	display: block;
 	color: green;
-	animation: fadeOut 1s;
 }
 #notif.succes:after {
 	content : "\2713";
@@ -63,7 +63,6 @@
 #notif.complet {
 	display: block;
 	color: green;
-	animation: fadeOut 1s;
 }
 #notif.complet:after {
 	content : "Bravo";
