@@ -1,4 +1,9 @@
-.button {
+#menu {
+	margin-bottom: 1em;
+}
+
+menu .button {
+  background-color: #4CAF50; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -8,20 +13,19 @@
   font-size: 16px;
 }
 
-#menu {
-	margin-bottom: 1em;
-}
-
-#menu .button {
-	background-color: #4c7aaf;
-}
-
 #entete {
 	margin-bottom: 1em;
 }
 
-#entete .button  {
+entete .button  {
   background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 #element-a-trouver {
@@ -101,6 +105,7 @@
 #tableau-reussi {
 	margin-left: 1em;
 }
+
 	
 #statut {
 	margin-top: 1em;

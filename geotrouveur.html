@@ -22,7 +22,6 @@ var succes = 0;
 var erreur = 0;
 var lastNotif = null;
 
-
 var geographie = undefined;
 
 function chargement(){
@@ -35,6 +34,23 @@ function chargement(){
 	}
 	var testGeo = JSON.parse(localStorage.getItem(nomLocalStorage));
 	console.log('testGeo', testGeo);*/
+	chargerJeu('region');
+}
+
+function chargerJeu(){
+	console.log('chargerJeu');
+
+	var succes = 0;
+	var erreur = 0;
+	$('#succes').html(succes);
+	$('#erreur').html(erreur);
+	
+	var lastNotif = null;
+	$('#tableau-reussi').empty();
+	$('#svg-carte').removeClass('started');
+	$('#element-a-trouver').empty();
+	
+	$('#btn-start').html('Commencer partie simple');
 	
 	declancherChaineDeChargement();
 }
@@ -59,11 +75,8 @@ function onSVGCharger(response, image) {
 	$('#carte-et-svg').css('width', image.width);
 	$('#carte-et-svg').css('height', image.height);
 	
-	chargerJeu();
-}
-
-function chargerJeu(){
 	initListElementComplet();
+	$('#jeux').css('display','block');
 }
 
 function initListElementComplet() {
@@ -74,11 +87,12 @@ function initListElementComplet() {
 	listElementComplet.sort();
 }
 
-function initListElementATrouver() {
+function initListElementATrouver() {	
 	listElementATrouver = [];
 	for(var element of listElementComplet) {
 		listElementATrouver.push(element);
 	}
+	elementATrouver = null;
 }
 
 function shuffleArray(array) {
@@ -95,6 +109,7 @@ function removeAllClick(){
 }
 
 function start(){
+	removeClassToAllRegionPath('erreur-region');
 	retirerDernierNotif();
 
 	initListElementATrouver();
@@ -113,6 +128,8 @@ function start(){
 	
 	$('#svg-carte').addClass('started');
 	$('#element-a-trouver').html(elementATrouver);
+	succes = 0;
+	erreur = 0;
 	$('#succes').html(succes);
 	$('#erreur').html(erreur);
 	
@@ -126,7 +143,6 @@ function construireTableauReussi() {
 		$('#tableau-reussi').append('<tr><td><span id="reussi-' + element + '">' + element + '</span></td></tr>');
 	
 	$('#tableau-reussi').append('</table>');}
-	$('#tableau-reussi')
 }
 
 function startParEtape(){
@@ -166,8 +182,7 @@ function regionClick(regionChoisi){
 			erreur++;
 			$('#erreur').html(erreur);	
 			addClassToRegionPath(regionChoisi, 'erreur-region');
-			afficherNotif('erreur');
-			
+			afficherNotif('erreur');			
 		}
 	}
 }
@@ -227,9 +242,12 @@ function removeClassToAllRegionPath(nomClass){
 
 </head>
 <body onload="chargement();">
-	<div id="contenant">
+	<div id="menu">
+		<button type="button" class="button" onclick="chargerJeu('region')">Regions administrative</button>
+	</div>
+	<div id="jeux" style="display:none">
 		<div id="entete">
-			<button id="btn-start" type="button" class="button" onclick="start()">Commencer partie simple</button>
+			<button id="btn-start" type="button" class="button" onclick="start()"></button>
 			<!--<button type="button" class="button" onclick="startParEtape()">Débuter apprentissage par étape</button>-->
 		</div>
 		<span id="element-a-trouver"></span>
