@@ -57,6 +57,11 @@
 		fill: rgba(0,0,0,0.5);
 	}
 }
+#svg-carte path.reussi{
+	stroke-width: 3;
+	color: lime;
+	/*fill: rgba(0,0,0,0.9);*/
+}
 
 #notif {
 	position: absolute;
@@ -104,4 +109,6 @@
 	
 #statut {
 	margin-top: 1em;
+	display: flex;
+    gap: 10px;
 }

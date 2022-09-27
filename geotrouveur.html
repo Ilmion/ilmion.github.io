@@ -5,16 +5,15 @@
 <script>
 /*
  progression
- chargement svg en dehors
- 
- feature requests :
-	- laisser la région qu'on a réussi visible en même temps que le crochet.
- 
+  
  Test local avec : python -m http.server
 */
 
 var nomLocalStorage = 'ilmion.geographie';
 var currentVersion = '1';
+var geographie = undefined;
+
+var nomJeu = null;
 var listElementComplet = [];
 var listElementATrouver = [];
 var elementATrouver = null;
@@ -22,28 +21,37 @@ var succes = 0;
 var erreur = 0;
 var lastNotif = null;
 
-var geographie = undefined;
+function saveLocalStorage() {
+	localStorage.setItem(nomLocalStorage, JSON.stringify(geographie));
+}
+
+function initJeuGlobalEtLocalStorage(pNomJeu) {
+	nomJeu = pNomJeu;
+	if(geographie[nomJeu] == undefined) {
+		geographie[nomJeu] = {};
+		geographie[nomJeu].simple = {};
+		geographie[nomJeu].simple.erreurRecord = -1;
+	}
+}
 
 function chargement(){
-	//geographie = localStorage.getItem(nomLocalStorage);
-	/*if(geographie == undefined) {
+	geographie = JSON.parse(localStorage.getItem(nomLocalStorage));
+	if(geographie == undefined) {
 		geographie = {};
 		geographie.version = currentVersion;
 		console.log('geographie', geographie);
-		localStorage.setItem(nomLocalStorage, JSON.stringify(geographie));
+		saveLocalStorage();
 	}
-	var testGeo = JSON.parse(localStorage.getItem(nomLocalStorage));
-	console.log('testGeo', testGeo);*/
+	//var testGeo = JSON.parse(localStorage.getItem(nomLocalStorage));
+	//console.log('testGeo', testGeo);
 	chargerJeu('region');
 }
 
-function chargerJeu(){
+function chargerJeu(pNomJeu){
 	console.log('chargerJeu');
+	initJeuGlobalEtLocalStorage(pNomJeu);
 
-	var succes = 0;
-	var erreur = 0;
-	$('#succes').html(succes);
-	$('#erreur').html(erreur);
+	resetSuccesEtErreur();
 	
 	var lastNotif = null;
 	$('#tableau-reussi').empty();
@@ -128,12 +136,26 @@ function start(){
 	
 	$('#svg-carte').addClass('started');
 	$('#element-a-trouver').html(elementATrouver);
+	resetSuccesEtErreur();
+	
+	$('#btn-start').html('Recommencer');
+}
+
+function resetSuccesEtErreur(){
 	succes = 0;
 	erreur = 0;
 	$('#succes').html(succes);
 	$('#erreur').html(erreur);
-	
-	$('#btn-start').html('Recommencer');
+
+	if(geographie[nomJeu].simple.erreurRecord != -1){
+		$('#erreur-record').html(geographie[nomJeu].simple.erreurRecord);
+		$('#erreur-record').css('display', 'inline');
+		$('#erreur-record-texte').css('display', 'inline');
+	}
+	else {
+		$('#erreur-record').css('display', 'none');
+		$('#erreur-record-texte').css('display', 'none');
+	}
 }
 
 function construireTableauReussi() {
@@ -155,6 +177,8 @@ function regionClick(regionChoisi){
 			succes++;
 			$('#succes').html(succes);
 			
+			addClassToRegionPath(regionChoisi, 'reussi');
+			
 			removeClassToAllRegionPath('erreur-region');
 			var idReussi = "span[id='reussi-" + regionChoisi + "']";
 			$(idReussi).addClass('reussi');
@@ -164,14 +188,18 @@ function regionClick(regionChoisi){
 				listElementATrouver.splice(index, 1);
 			}
 			if(listElementATrouver.length == 0){
-				succes = 0;
-				erreur = 0;
+				if(geographie[nomJeu].simple.erreurRecord == -1 || erreur < geographie[nomJeu].simple.erreurRecord) {
+					console.log('succes on sauve');
+					geographie[nomJeu].simple.erreurRecord = erreur;
+					saveLocalStorage();
+				}
 				$('#svg-carte').removeClass('started');
 				$('#element-a-trouver').empty();
 				afficherNotif("complet", null, true);
 			}
 			else {
 				afficherNotif('succes', function() {
+					removeClassToRegionPath(regionChoisi, 'reussi')
 					elementATrouver = listElementATrouver[Math.floor(Math.random()*listElementATrouver.length)];
 					console.log('Element a trouver' + elementATrouver);
 					$('#element-a-trouver').html(elementATrouver);
@@ -212,7 +240,13 @@ function retirerDernierNotif(){
 function addClassToRegionPath(idRegion, nomClass){
 	$('#svg-carte svg').children('path').each(function () {
 		if($(this).attr('id') == idRegion) {
-			var newClass = $(this).attr('class') + ' ' + nomClass; 
+			var newClass = '';
+			if($(this).attr('class') != undefined) {
+				newClass = $(this).attr('class') + ' ' + nomClass; 
+			}
+			else {
+				newClass = nomClass; 
+			}
 			$(this).attr('class', newClass);
 		}
 	});
@@ -231,9 +265,7 @@ function removeClassToAllRegionPath(nomClass){
 	$('#svg-carte svg').children('path').each(function () {
 		var actualClass = $(this).attr('class');
 		if(actualClass != undefined) {
-			console.log('actual', actualClass);
 			var newClass = $(this).attr('class').replace(nomClass, '').trim();
-			console.log('newClass',newClass);
 			$(this).attr('class', newClass);
 		}
 	});
@@ -243,7 +275,7 @@ function removeClassToAllRegionPath(nomClass){
 </head>
 <body onload="chargement();">
 	<div id="menu">
-		<button type="button" class="button" onclick="chargerJeu('region')">Regions administrative</button>
+		<button type="button" class="button" onclick="chargerJeu('region')">Regions administratives</button>
 	</div>
 	<div id="jeux" style="display:none">
 		<div id="entete">
@@ -260,8 +292,9 @@ function removeClassToAllRegionPath(nomClass){
 			<div id="tableau-reussi"></div>
 		</div>
 		<div id="statut">
-			<span>Succes : </span><span id="succes"></span>
-			<span>Erreur : </span><span id="erreur"></span>
+			<div><span>Succes : </span><span id="succes"></span></div>
+			<div><span>Erreur : </span><span id="erreur"></span></div>
+			<div><span id="erreur-record-texte">Reccord d'erreur : </span><span id="erreur-record"><span></div>
 		</div>	
 	</div>
 </body>
