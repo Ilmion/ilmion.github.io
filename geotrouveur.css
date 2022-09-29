@@ -1,11 +1,12 @@
 .button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	background-color: #4CAF50; /* Green */
 }
 
 #menu {
@@ -21,7 +22,28 @@
 }
 
 #entete .button  {
-  background-color: #4CAF50; /* Green */
+	background-color: #4CAF50; /* Green */
+}
+
+#choixEtape {
+	margin-bottom: 1em;
+}
+
+#choixEtape .button {
+	background-color: #4CAF50; /* Green */
+}
+
+.btn-choix {
+	display: grid;
+}
+
+#lesChoixEtape{
+	display: flex;
+	gap: 1em;
+}
+
+.buttonDescription{
+	font-size: 0.75em;
 }
 
 #element-a-trouver {

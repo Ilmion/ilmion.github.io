@@ -4,7 +4,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 /*
+
  progression
+  
+ // effacer les choix si une partie simple est lancé
   
  Test local avec : python -m http.server
 */
@@ -29,8 +32,16 @@ function initJeuGlobalEtLocalStorage(pNomJeu) {
 	nomJeu = pNomJeu;
 	if(geographie[nomJeu] == undefined) {
 		geographie[nomJeu] = {};
+	}
+	if(geographie[nomJeu].simple == undefined) {
 		geographie[nomJeu].simple = {};
 		geographie[nomJeu].simple.erreurRecord = -1;
+	}
+	if(geographie[nomJeu].progression == undefined) {
+		geographie[nomJeu].progression = {};
+		geographie[nomJeu].progression.elementsATrouver = [];
+		geographie[nomJeu].progression.succesConsecutif = 0;
+		geographie[nomJeu].progression.type = null;
 	}
 }
 
@@ -42,8 +53,6 @@ function chargement(){
 		console.log('geographie', geographie);
 		saveLocalStorage();
 	}
-	//var testGeo = JSON.parse(localStorage.getItem(nomLocalStorage));
-	//console.log('testGeo', testGeo);
 	chargerJeu('region');
 }
 
@@ -57,8 +66,21 @@ function chargerJeu(pNomJeu){
 	$('#tableau-reussi').empty();
 	$('#svg-carte').removeClass('started');
 	$('#element-a-trouver').empty();
+	$('#erreur-record').css('display', 'none');
+	$('#erreur-record-texte').css('display', 'none');
 	
 	$('#btn-start').html('Commencer partie simple');
+	
+	if(geographie[nomJeu].progression.elementsATrouver.length > 0){
+		$('#btn-start-etape').html('Continuer apprentissage par &eacute;tape');
+	}
+	else {
+		$('#btn-start-etape').html('Commencer apprentissage par &eacute;tape');
+	}
+	
+	
+	
+	$('#choixEtape').css('display', 'none');
 	
 	declancherChaineDeChargement();
 }
@@ -117,7 +139,10 @@ function removeAllClick(){
 }
 
 function start(){
+	$('#choixEtape').css('display', 'none');
 	removeClassToAllRegionPath('erreur-region');
+	removeClassToAllRegionPath('reussi');
+	
 	retirerDernierNotif();
 
 	initListElementATrouver();
@@ -138,15 +163,6 @@ function start(){
 	$('#element-a-trouver').html(elementATrouver);
 	resetSuccesEtErreur();
 	
-	$('#btn-start').html('Recommencer');
-}
-
-function resetSuccesEtErreur(){
-	succes = 0;
-	erreur = 0;
-	$('#succes').html(succes);
-	$('#erreur').html(erreur);
-
 	if(geographie[nomJeu].simple.erreurRecord != -1){
 		$('#erreur-record').html(geographie[nomJeu].simple.erreurRecord);
 		$('#erreur-record').css('display', 'inline');
@@ -156,6 +172,15 @@ function resetSuccesEtErreur(){
 		$('#erreur-record').css('display', 'none');
 		$('#erreur-record-texte').css('display', 'none');
 	}
+	
+	$('#btn-start').html('Recommencer');
+}
+
+function resetSuccesEtErreur(){
+	succes = 0;
+	erreur = 0;
+	$('#succes').html(succes);
+	$('#erreur').html(erreur);
 }
 
 function construireTableauReussi() {
@@ -168,7 +193,20 @@ function construireTableauReussi() {
 }
 
 function startParEtape(){
+	$('#btn-start').html('Commencer partie simple');
+	retirerDernierNotif();
+	$('#tableau-reussi').empty();
+	$('#svg-carte').removeClass('started');
+	$('#element-a-trouver').empty();
+	$('#erreur-record').css('display', 'none');
+	$('#erreur-record-texte').css('display', 'none');
 
+	
+	$('#choixEtape').css('display', 'inherit');
+}
+
+function choixParEtape(){
+	// TODO : Prendre le target et en déduire le type. target.dataset.type
 }
 
 function regionClick(regionChoisi){
@@ -199,7 +237,7 @@ function regionClick(regionChoisi){
 			}
 			else {
 				afficherNotif('succes', function() {
-					removeClassToRegionPath(regionChoisi, 'reussi')
+					removeClassToRegionPath(regionChoisi, 'reussi');
 					elementATrouver = listElementATrouver[Math.floor(Math.random()*listElementATrouver.length)];
 					console.log('Element a trouver' + elementATrouver);
 					$('#element-a-trouver').html(elementATrouver);
@@ -280,7 +318,15 @@ function removeClassToAllRegionPath(nomClass){
 	<div id="jeux" style="display:none">
 		<div id="entete">
 			<button id="btn-start" type="button" class="button" onclick="start()"></button>
-			<!--<button type="button" class="button" onclick="startParEtape()">Débuter apprentissage par étape</button>-->
+			<!--<button id="btn-start-etape" type="button" class="button" onclick="startParEtape()"></button>-->
+		</div>
+		<div id="choixEtape">
+			<span>Le mode part &eacute;tapes permet d'apprendre progressivement. Vous commencez avec un nombre r&eacute;duit d'&eacute;l&eacute;ments &agrave; trouver. Apr&egrave;s une s&eacute;rie de succ&egrave;s d'autre &eacute;l&eacute;ments sont ajout&eacute;s. Ainsi de suite.</span>
+			<div id="lesChoixEtape">
+				<div><button id="choixRapide" class="button btn-choix" onclick="choixParEtape()" data-type="rapide"><span class="buttonTitre">Rapide</span><span class="buttonDescription">D&eacute;part : 5, Succ&egrave;s pour avancement : 1, Ajout&eacute;s : 3</span></button></div>
+				<div><button id="choixMoyen" class="button btn-choix" onclick="choixParEtape()" data-type="moyen"><span class="buttonTitre">Moyen</span><span class="buttonDescription">D&eacute;part : 3, Succ&egrave;s pour avancement : 2, Ajout&eacute;s : 2</span></button></div>
+				<div><button id="choixLent" class="button btn-choix" onclick="choixParEtape()" data-type="lent"><span class="buttonTitre">Lent</span><span class="buttonDescription">D&eacute;part : 3, Succ&egrave;s pour avancement : 2, Ajout&eacute;s : 1</span></button></div>
+			</div>
 		</div>
 		<span id="element-a-trouver"></span>
 		<div id="carte-resultat">
