@@ -70,14 +70,15 @@
 	pointer-events:none;
 	stroke-width:0;	
 }
-#svg-carte.started path{
+#svg-carte.started path:not(.no-hover){
 	pointer-events:all;
 }
 #svg-carte path.erreur-region{
 	fill: rgba(0,0,0,0.9);
 }
 @media(hover: hover) and (pointer: fine) {
-	#svg-carte path:hover{
+	.fake-hover,
+	#svg-carte path:not(.no-hover):hover{
 		fill: rgba(0,0,0,0.5);
 	}
 }

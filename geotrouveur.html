@@ -30,11 +30,15 @@ var jeuxDisponibles = {
 		'image':'jeux/Regions Administratives.gif',
 		'svg':'jeux/Regions Administratives.html'
 	},
-	'provinces' :{
-		'id':'province',
+	'province' :{
 		'nom':'Provinces du Canada',
 		'image':'jeux/Provinces Canadiennes.gif',
 		'svg':'jeux/Provinces Canadiennes.html'
+	},
+	'capitale' :{
+		'nom':'Capitales du Canada',
+		'image':'jeux/Capitales Canadiennes.gif',
+		'svg':'jeux/Capitales Canadiennes.html'
 	},
 };
 
@@ -133,7 +137,16 @@ function onSVGCharger(response, image) {
 function initListElementComplet() {
 	listElementComplet = [];
 	$('#svg-carte svg').children('path').each(function () {
-		listElementComplet.push($(this).attr('id'));
+		let element = $(this).attr('id');
+		if(!element.includes('{')) {
+			//let indexCrochetFermant = element.indexOf(']');
+			//if(indexCrochetFermant == -1) {
+			listElementComplet.push(element);
+			//}
+			//else {
+			//	listElementComplet.push(element.substring(indexCrochetFermant)+1);
+			//}
+		}
 	});
 	listElementComplet.sort();
 }
@@ -175,13 +188,30 @@ function start(){
 	removeAllClick();
 	$('#svg-carte svg').children('path').each(function () {
 		var idRegion = $(this).attr('id');
-		$(this).click(function() {
-			regionClick(idRegion);
-		});
+		if(idRegion.includes('[')) {
+			addClassToRegionPath(idRegion, 'no-hover');
+		}
+		else {
+			if(idRegion.includes('{')) {
+				idCible = trouverElementCible(idRegion);
+				$(this).hover(
+					function() {
+						addClassToRegionPath(idCible, 'fake-hover');
+					},
+					function() {
+						removeClassToRegionPath(idCible, 'fake-hover');
+					}
+				)
+			}
+			
+			$(this).click(function() {
+				regionClick(idRegion);
+			});
+		} 
 	});
 	
 	$('#svg-carte').addClass('started');
-	$('#element-a-trouver').html(elementATrouver);
+	$('#element-a-trouver').html(decoderNomElement(elementATrouver));
 	resetSuccesEtErreur();
 	
 	if(geographie[idJeu].simple.erreurRecord != -1){
@@ -197,6 +227,22 @@ function start(){
 	$('#btn-start').html('Recommencer');
 }
 
+function trouverElementCible(idElement){
+	console.log('idElement',idElement);
+	let indexDebut = idElement.indexOf('{');
+	let indexFin = idElement.indexOf('}');
+	let cible = '[' + idElement.substring(indexDebut+1, indexFin) + ']';
+	let elementCible = null;
+	$('#svg-carte svg').children('path').each(function () {
+		if($(this).attr('id').includes(cible)){
+			elementCible = $(this).attr('id');
+			return false;
+		}
+	});
+	console.log('elementCible',elementCible);
+	return elementCible;
+}
+
 function resetSuccesEtErreur(){
 	succes = 0;
 	erreur = 0;
@@ -208,9 +254,19 @@ function construireTableauReussi() {
 	$('#tableau-reussi').empty();
 	$('#tableau-reussi').append('<table>');
 	for(var element of listElementATrouver){
-		$('#tableau-reussi').append('<tr><td><span id="reussi-' + element + '">' + element + '</span></td></tr>');
-	
-	$('#tableau-reussi').append('</table>');}
+		$('#tableau-reussi').append('<tr><td><span id="reussi-' + element + '">' + decoderNomElement(element) + '</span></td></tr>');
+	}
+	$('#tableau-reussi').append('</table>');
+}
+
+function decoderNomElement(idElement){
+	let indexCrochetFermant = idElement.indexOf('[');
+	if(indexCrochetFermant == -1) {
+		return idElement;
+	}
+	else {
+		return idElement.substring(0, indexCrochetFermant);
+	}
 }
 
 function startParEtape(){
@@ -230,16 +286,22 @@ function choixParEtape(){
 	// TODO : Prendre le target et en déduire le type. target.dataset.type
 }
 
+// TODO : Ajouter le trouvage de la cible
 function regionClick(regionChoisi){
 	if(elementATrouver != null) {
-		if(regionChoisi == elementATrouver) {
+		let cible = regionChoisi;
+		if(regionChoisi.includes('{')){
+			cible = trouverElementCible(regionChoisi);
+		}
+		console.log('regionChoisi: '+ regionChoisi + ', elementATrouver: ' + elementATrouver);
+		if(cible == elementATrouver) {
 			succes++;
 			$('#succes').html(succes);
 			
-			addClassToRegionPath(regionChoisi, 'reussi');
+			addClassToRegionPath(cible, 'reussi');
 			
 			removeClassToAllRegionPath('erreur-region');
-			var idReussi = "span[id='reussi-" + regionChoisi + "']";
+			var idReussi = "span[id='reussi-" + cible + "']";
 			$(idReussi).addClass('reussi');
 			
 			const index = listElementATrouver.indexOf(elementATrouver);
@@ -258,10 +320,11 @@ function regionClick(regionChoisi){
 			}
 			else {
 				afficherNotif('succes', function() {
-					removeClassToRegionPath(regionChoisi, 'reussi');
+					console.log('cible', cible);
+					removeClassToRegionPath(cible, 'reussi');
 					elementATrouver = listElementATrouver[Math.floor(Math.random()*listElementATrouver.length)];
 					console.log('Element a trouver' + elementATrouver);
-					$('#element-a-trouver').html(elementATrouver);
+					$('#element-a-trouver').html(decoderNomElement(elementATrouver));
 				});				
 			}
 		}
@@ -307,6 +370,7 @@ function addClassToRegionPath(idRegion, nomClass){
 				newClass = nomClass; 
 			}
 			$(this).attr('class', newClass);
+			return false;
 		}
 	});
 }
@@ -316,6 +380,7 @@ function removeClassToRegionPath(idRegion, nomClass){
 		if($(this).attr('id') == idRegion) {
 			var newClass = $(this).attr('class').replace(nomClass, '').trim();
 			$(this).attr('class', newClass);
+			return false;
 		}
 	});
 }
