@@ -16,7 +16,7 @@ var nomLocalStorage = 'ilmion.geographie';
 var currentVersion = '1';
 var geographie = undefined;
 
-var nomJeu = null;
+var idJeu = null;
 var listElementComplet = [];
 var listElementATrouver = [];
 var elementATrouver = null;
@@ -24,24 +24,38 @@ var succes = 0;
 var erreur = 0;
 var lastNotif = null;
 
+var jeuxDisponibles = {
+	'region' : {
+		'nom':'R&eacute;gions administratives',
+		'image':'jeux/Regions Administratives.gif',
+		'svg':'jeux/Regions Administratives.html'
+	},
+	'provinces' :{
+		'id':'province',
+		'nom':'Provinces du Canada',
+		'image':'jeux/Provinces Canadiennes.gif',
+		'svg':'jeux/Provinces Canadiennes.html'
+	},
+};
+
 function saveLocalStorage() {
 	localStorage.setItem(nomLocalStorage, JSON.stringify(geographie));
 }
 
-function initJeuGlobalEtLocalStorage(pNomJeu) {
-	nomJeu = pNomJeu;
-	if(geographie[nomJeu] == undefined) {
-		geographie[nomJeu] = {};
+function initJeuGlobalEtLocalStorage(pIdJeu) {
+	idJeu = pIdJeu;
+	if(geographie[idJeu] == undefined) {
+		geographie[idJeu] = {};
 	}
-	if(geographie[nomJeu].simple == undefined) {
-		geographie[nomJeu].simple = {};
-		geographie[nomJeu].simple.erreurRecord = -1;
+	if(geographie[idJeu].simple == undefined) {
+		geographie[idJeu].simple = {};
+		geographie[idJeu].simple.erreurRecord = -1;
 	}
-	if(geographie[nomJeu].progression == undefined) {
-		geographie[nomJeu].progression = {};
-		geographie[nomJeu].progression.elementsATrouver = [];
-		geographie[nomJeu].progression.succesConsecutif = 0;
-		geographie[nomJeu].progression.type = null;
+	if(geographie[idJeu].progression == undefined) {
+		geographie[idJeu].progression = {};
+		geographie[idJeu].progression.elementsATrouver = [];
+		geographie[idJeu].progression.succesConsecutif = 0;
+		geographie[idJeu].progression.type = null;
 	}
 }
 
@@ -53,12 +67,20 @@ function chargement(){
 		console.log('geographie', geographie);
 		saveLocalStorage();
 	}
+	
+	
+	for(const [key, jeu] of Object.entries(jeuxDisponibles)){
+	    $('#menu').append('<button type="button" class="button" onclick="chargerJeu(\'' + key + '\')">' + jeu.nom + '</button>');
+	}
+	
 	chargerJeu('region');
+	
+	
 }
 
-function chargerJeu(pNomJeu){
-	console.log('chargerJeu');
-	initJeuGlobalEtLocalStorage(pNomJeu);
+function chargerJeu(pIdJeu){
+	console.log('chargerJeu', pIdJeu);
+	initJeuGlobalEtLocalStorage(pIdJeu);
 
 	resetSuccesEtErreur();
 	
@@ -71,14 +93,12 @@ function chargerJeu(pNomJeu){
 	
 	$('#btn-start').html('Commencer partie simple');
 	
-	if(geographie[nomJeu].progression.elementsATrouver.length > 0){
+	if(geographie[idJeu].progression.elementsATrouver.length > 0){
 		$('#btn-start-etape').html('Continuer apprentissage par &eacute;tape');
 	}
 	else {
 		$('#btn-start-etape').html('Commencer apprentissage par &eacute;tape');
-	}
-	
-	
+	}	
 	
 	$('#choixEtape').css('display', 'none');
 	
@@ -86,15 +106,16 @@ function chargerJeu(pNomJeu){
 }
 
 function declancherChaineDeChargement() {
+	$('#img-carte').empty();
 	var theCachedImage = new Image();
 	theCachedImage.id = "img-carte";
 	$(theCachedImage).on( "load", onImageCharger );
-	theCachedImage.src = 'jeux/Regions Administratives.gif';
+	theCachedImage.src = jeuxDisponibles[idJeu].image;
 }
 
 function onImageCharger(e){
 	$('#img-carte').append(e.target);
-	$.ajax('jeux/Regions Administratives.html', { success: function(response) { onSVGCharger(response, e.target) } } );
+	$.ajax(jeuxDisponibles[idJeu].svg, { success: function(response) { onSVGCharger(response, e.target) } } );
 }
 
 function onSVGCharger(response, image) {
@@ -163,8 +184,8 @@ function start(){
 	$('#element-a-trouver').html(elementATrouver);
 	resetSuccesEtErreur();
 	
-	if(geographie[nomJeu].simple.erreurRecord != -1){
-		$('#erreur-record').html(geographie[nomJeu].simple.erreurRecord);
+	if(geographie[idJeu].simple.erreurRecord != -1){
+		$('#erreur-record').html(geographie[idJeu].simple.erreurRecord);
 		$('#erreur-record').css('display', 'inline');
 		$('#erreur-record-texte').css('display', 'inline');
 	}
@@ -226,9 +247,9 @@ function regionClick(regionChoisi){
 				listElementATrouver.splice(index, 1);
 			}
 			if(listElementATrouver.length == 0){
-				if(geographie[nomJeu].simple.erreurRecord == -1 || erreur < geographie[nomJeu].simple.erreurRecord) {
+				if(geographie[idJeu].simple.erreurRecord == -1 || erreur < geographie[idJeu].simple.erreurRecord) {
 					console.log('succes on sauve');
-					geographie[nomJeu].simple.erreurRecord = erreur;
+					geographie[idJeu].simple.erreurRecord = erreur;
 					saveLocalStorage();
 				}
 				$('#svg-carte').removeClass('started');
@@ -312,9 +333,7 @@ function removeClassToAllRegionPath(nomClass){
 
 </head>
 <body onload="chargement();">
-	<div id="menu">
-		<button type="button" class="button" onclick="chargerJeu('region')">Regions administratives</button>
-	</div>
+	<div id="menu"></div>
 	<div id="jeux" style="display:none">
 		<div id="entete">
 			<button id="btn-start" type="button" class="button" onclick="start()"></button>
