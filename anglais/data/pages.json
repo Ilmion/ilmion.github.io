@@ -1,0 +1,51 @@
+{
+    "pages": [
+      {
+        "numero": 1,
+        "images": [
+          {
+            "fichier": "images/image1.bmp",
+            "texte": "Sit"
+          },
+          {
+            "fichier": "images/image2.bmp",
+            "texte": "Jump"
+          }
+        ]
+      },
+      {
+        "numero": 2,
+        "images": [
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          },
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          },
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          },
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          },
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          },
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          },
+          {
+            "fichier": "images/image3.bmp",
+            "texte": "a"
+          }
+        ]
+      }
+    ]
+  }
+  
