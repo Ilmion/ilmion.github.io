@@ -1,51 +1,109 @@
 {
-    "pages": [
-      {
-        "numero": 1,
-        "images": [
-          {
-            "fichier": "images/image1.bmp",
-            "texte": "Sit"
-          },
-          {
-            "fichier": "images/image2.bmp",
-            "texte": "Jump"
-          }
-        ]
-      },
-      {
-        "numero": 2,
-        "images": [
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          },
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          },
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          },
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          },
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          },
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          },
-          {
-            "fichier": "images/image3.bmp",
-            "texte": "a"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "pages": [
+    {
+      "numero": 17,
+      "images": [
+        {
+          "fichier": "images/17/page17_ask.png",
+          "texte": "ask"
+        },
+        {
+          "fichier": "images/17/page17_bequiet.png",
+          "texte": "be quiet"
+        },
+        {
+          "fichier": "images/17/page17_cleanup.png",
+          "texte": "clean up"
+        },
+        {
+          "fichier": "images/17/page17_clodeyourbook.png",
+          "texte": "close your book"
+        },
+        {
+          "fichier": "images/17/page17_color.png",
+          "texte": "color"
+        },
+        {
+          "fichier": "images/17/page17_come.png",
+          "texte": "come"
+        },
+        {
+          "fichier": "images/17/page17_cut.png",
+          "texte": "cut"
+        },
+        {
+          "fichier": "images/17/page17_draw.png",
+          "texte": "draw"
+        },
+        {
+          "fichier": "images/17/page17_find.png",
+          "texte": "find"
+        },
+        {
+          "fichier": "images/17/page17_glue.png",
+          "texte": "glue"
+        },
+        {
+          "fichier": "images/17/page17_highlight.png",
+          "texte": "highlight"
+        },
+        {
+          "fichier": "images/17/page17_listen.png",
+          "texte": "listen"
+        },
+        {
+          "fichier": "images/17/page17_look.png",
+          "texte": "look"
+        },
+        {
+          "fichier": "images/17/page17_openyourbook.png",
+          "texte": "open your book"
+        },
+        {
+          "fichier": "images/17/page17_putaway.png",
+          "texte": "put away"
+        },
+        {
+          "fichier": "images/17/page17_raiseyourhand.png",
+          "texte": "raise your hand"
+        },
+        {
+          "fichier": "images/17/page17_read.png",
+          "texte": "read"
+        },
+        {
+          "fichier": "images/17/page17_say.png",
+          "texte": "say"
+        },
+        {
+          "fichier": "images/17/page17_share.png",
+          "texte": "share"
+        },
+        {
+          "fichier": "images/17/page17_sitdown.png",
+          "texte": "sit down"
+        },
+        {
+          "fichier": "images/17/page17_speak.png",
+          "texte": "speak"
+        },
+        {
+          "fichier": "images/17/page17_standup.png",
+          "texte": "stand up"
+        },
+        {
+          "fichier": "images/17/page17_think.png",
+          "texte": "think"
+        },
+        {
+          "fichier": "images/17/page17_underline.png",
+          "texte": "underline"
+        },
+        {
+          "fichier": "images/17/page17_write.png",
+          "texte": "write"
+        }
+      ]
+    }
+  ]
+}
