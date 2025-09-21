@@ -1,6 +1,5 @@
 {
   "pages": [
-
     {
       "numero": 15,
       "images": [
@@ -176,6 +175,173 @@
           "textes": [
             {
               "texte": "thank you"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 16,
+      "images": [
+        {
+          "fichier": "images/16/page16_caniaskaquestion.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "can i ask a question"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_canihelpyou.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "can i help you"
+            },
+            {
+              "texte": "can you help me"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_caniputintherecyclingbin.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "can i put this in the recycling bin"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_canithrowthisaway.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "can i throw this away"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_canyourepeat.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "can you repeat please"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_doyouwanttowork.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "do you want to work with me"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_hodoyousaypomme.png",
+          "avant": null,
+          "apres": "\"pomme\" on English",
+          "textes": [
+            {
+              "texte": "how do you say"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_howdoyouspell.png",
+          "avant": null,
+          "apres": "\"apple\"",
+          "textes": [
+            {
+              "texte": "how do you spell"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_idontknow.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i don't know"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_idontundersantd.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i don't understand"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_mayigoget.png",
+          "avant": "may i go get my",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "pencil"
+            },
+            {
+              "texte": "eraser"
+            },
+            {
+              "texte": "scissors"
+            },
+            {
+              "texte": "colouring pencils"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_mayisharpen.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "my i sharpen my pencil"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_mayitakeadictionary.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "may i take a dictionary"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_mayiworkwithafriend.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "may i work with a friend"
+            }
+          ]
+        },
+        {
+          "fichier": "images/16/page16_whatdowsapplemean.png",
+          "avant": "what does \"apple\"",
+          "apres": "in French",
+          "textes": [
+            {
+              "texte": "mean"
             }
           ]
         }
@@ -431,6 +597,355 @@
           "textes": [
             {
               "texte": "write"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 18,
+      "images": [
+        {
+          "fichier": "images/18/page18_mayiblwmynose.png",
+          "avant": "may i",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "blow my nose"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayiborrow.png",
+          "avant": "May i",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "borrow a pencil"
+            },
+            {
+              "texte": "borrow an eraser"
+            },
+            {
+              "texte": "borrow scissors"
+            },
+            {
+              "texte": "borrow coloring pencils"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayiclodeopenthewindows.png",
+          "avant": "May i",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "open the windows"
+            },
+            {
+              "texte": "close the windows"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayicloseopentheblinds.png",
+          "avant": "May i",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "open the blinds"
+            },
+            {
+              "texte": "close the blinds"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayidrawontheboard.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "draw on the board"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayidrinksomewater.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "drink some water"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayierasetheboard.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "erase the board"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayigotothewashroomplease.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "go to the washroom please"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayigowashmyhands.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "go wash my hands"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayitakeatissue.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "take a tissue"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayiturnoffthelight.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "turn off the light"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayiturnonthelight.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "turn on the light"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_mayocloseopenthedoor.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "close the door"
+            },
+            {
+              "texte": "open the door"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_myibringmybottle.png",
+          "avant": "May I",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "bring my bottle of water"
+            }
+          ]
+        },
+        {
+          "fichier": "images/18/page18_myihandout.png",
+          "avant": "May I hand out the",
+          "apres": null,
+          "textes": [
+            {
+              "texte": "papers"
+            },
+            {
+              "texte": "documents"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 19,
+      "images": [
+        {
+          "fichier": "images/19/page19_goodjobwelldone.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "good job"
+            },
+            {
+              "texte": "well done"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_iagree.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i agree"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_idontagree.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i don't agree"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_idontlikeihate.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i don't like"
+            },
+            {
+              "texte": "i hate"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_idontwant.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i don't want"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_ilikellove.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i like"
+            },
+            {
+              "texte": "i love"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_iprefer.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i prefer"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_ithinkitisagoodidea.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i think it is a good idea"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_itsmyturnitsyourturn.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "it's my turn"
+            },
+            {
+              "texte": "it's your turn"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_iwant.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "i want"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_myfavourite.png",
+          "avant": null,
+          "apres": "(animal) is the (lion)",
+          "textes": [
+            {
+              "texte": "my favourite"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_whatdoyouprefer.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "what do you prefer"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_whatdoyouthink.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "what do you think"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_whatisyoufavourite.png",
+          "avant": null,
+          "apres": "(animal)",
+          "textes": [
+            {
+              "texte": "what is your favourite"
+            }
+          ]
+        },
+        {
+          "fichier": "images/19/page19_yesnomaybe.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "yes"
+            },
+            {
+              "texte": "no"
+            },
+            {
+              "texte": "maybe"
             }
           ]
         }
