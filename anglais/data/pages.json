@@ -1,165 +1,181 @@
 {
   "pages": [
+
     {
       "numero": 15,
       "images": [
         {
           "fichier": "images/15/page15_byegoodbye.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "bye goodbye",
-              "avant": null,
-              "apres": null
+              "texte": "bye"
+            },
+            {
+              "texte": "goodbye"
             }
           ]
         },
         {
           "fichier": "images/15/page15_excuseme.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "excuse me",
-              "avant": null,
-              "apres": null
+              "texte": "excuse me"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodafternoon.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good afternoon",
-              "avant": null,
-              "apres": null
+              "texte": "good afternoon"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodday.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good day",
-              "avant": null,
-              "apres": null
+              "texte": "good day"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodevening.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good evening",
-              "avant": null,
-              "apres": null
+              "texte": "good evening"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodmorning.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good morning",
-              "avant": null,
-              "apres": null
+              "texte": "good morning"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodninght.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good night",
-              "avant": null,
-              "apres": null
+              "texte": "good night"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodweek.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good week",
-              "avant": null,
-              "apres": null
+              "texte": "good week"
             }
           ]
         },
         {
           "fichier": "images/15/page15_goodweekend.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "good weekend",
-              "avant": null,
-              "apres": null
+              "texte": "good weekend"
             }
           ]
         },
         {
           "fichier": "images/15/page15_hihello.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "hi hello",
-              "avant": null,
-              "apres": null
+              "texte": "hello"
+            },
+            {
+              "texte": "hi"
             }
           ]
         },
         {
           "fichier": "images/15/page15_howareyou.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "how are you",
-              "avant": null,
-              "apres": null
+              "texte": "how are you"
             }
           ]
         },
         {
           "fichier": "images/15/page15_imfinegoodokeyandyou.png",
+          "avant": "I'm",
+          "apres": "and you ?",
           "textes": [
             {
-              "texte": "i'm fine good ok and you",
-              "avant": null,
-              "apres": null
+              "texte": "fine"
+            },
+            {
+              "texte": "good"
+            },
+            {
+              "texte": "ok"
             }
           ]
         },
         {
           "fichier": "images/15/page15_imsorry.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "i'm sorry",
-              "avant": null,
-              "apres": null
+              "texte": "i'm sorry"
             }
           ]
         },
         {
           "fichier": "images/15/page15_please.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "please",
-              "avant": null,
-              "apres": null
+              "texte": "please"
             }
           ]
         },
         {
           "fichier": "images/15/page15_seeyousoontomorrow.png",
+          "avant": "see you",
+          "apres": null,
           "textes": [
             {
-              "texte": "see you soon tomorrow",
-              "avant": null,
-              "apres": null
+              "texte": "soon"
+            },
+            {
+              "texte": "tomorrow"
             }
           ]
         },
         {
           "fichier": "images/15/page15_thankyou.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "thank you",
-              "avant": null,
-              "apres": null
+              "texte": "thank you"
             }
           ]
         }
@@ -170,251 +186,251 @@
       "images": [
         {
           "fichier": "images/17/page17_ask.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "ask",
-              "avant": null,
-              "apres": null
+              "texte": "ask"
             }
           ]
         },
         {
           "fichier": "images/17/page17_bequiet.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "be quiet",
-              "avant": null,
-              "apres": null
+              "texte": "be quiet"
             }
           ]
         },
         {
           "fichier": "images/17/page17_cleanup.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "clean up",
-              "avant": null,
-              "apres": null
+              "texte": "clean up"
             }
           ]
         },
         {
           "fichier": "images/17/page17_clodeyourbook.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "close your book",
-              "avant": null,
-              "apres": null
+              "texte": "close your book"
             }
           ]
         },
         {
           "fichier": "images/17/page17_color.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "color",
-              "avant": null,
-              "apres": null
+              "texte": "color"
             }
           ]
         },
         {
           "fichier": "images/17/page17_come.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "come",
-              "avant": null,
-              "apres": null
+              "texte": "come"
             }
           ]
         },
         {
           "fichier": "images/17/page17_cut.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "cut",
-              "avant": null,
-              "apres": null
+              "texte": "cut"
             }
           ]
         },
         {
           "fichier": "images/17/page17_draw.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "draw",
-              "avant": null,
-              "apres": null
+              "texte": "draw"
             }
           ]
         },
         {
           "fichier": "images/17/page17_find.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "find",
-              "avant": null,
-              "apres": null
+              "texte": "find"
             }
           ]
         },
         {
           "fichier": "images/17/page17_glue.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "glue",
-              "avant": null,
-              "apres": null
+              "texte": "glue"
             }
           ]
         },
         {
           "fichier": "images/17/page17_highlight.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "highlight",
-              "avant": null,
-              "apres": null
+              "texte": "highlight"
             }
           ]
         },
         {
           "fichier": "images/17/page17_listen.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "listen",
-              "avant": null,
-              "apres": null
+              "texte": "listen"
             }
           ]
         },
         {
           "fichier": "images/17/page17_look.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "look",
-              "avant": null,
-              "apres": null
+              "texte": "look"
             }
           ]
         },
         {
           "fichier": "images/17/page17_openyourbook.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "open your book",
-              "avant": null,
-              "apres": null
+              "texte": "open your book"
             }
           ]
         },
         {
           "fichier": "images/17/page17_putaway.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "put away",
-              "avant": null,
-              "apres": null
+              "texte": "put away"
             }
           ]
         },
         {
           "fichier": "images/17/page17_raiseyourhand.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "raise your hand",
-              "avant": null,
-              "apres": null
+              "texte": "raise your hand"
             }
           ]
         },
         {
           "fichier": "images/17/page17_read.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "read",
-              "avant": null,
-              "apres": null
+              "texte": "read"
             }
           ]
         },
         {
           "fichier": "images/17/page17_say.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "say",
-              "avant": null,
-              "apres": null
+              "texte": "say"
             }
           ]
         },
         {
           "fichier": "images/17/page17_share.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "share",
-              "avant": null,
-              "apres": null
+              "texte": "share"
             }
           ]
         },
         {
           "fichier": "images/17/page17_sitdown.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "sit down",
-              "avant": null,
-              "apres": null
+              "texte": "sit down"
             }
           ]
         },
         {
           "fichier": "images/17/page17_speak.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "speak",
-              "avant": null,
-              "apres": null
+              "texte": "speak"
             }
           ]
         },
         {
           "fichier": "images/17/page17_standup.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "stand up",
-              "avant": null,
-              "apres": null
+              "texte": "stand up"
             }
           ]
         },
         {
           "fichier": "images/17/page17_think.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "think",
-              "avant": null,
-              "apres": null
+              "texte": "think"
             }
           ]
         },
         {
           "fichier": "images/17/page17_underline.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "underline",
-              "avant": null,
-              "apres": null
+              "texte": "underline"
             }
           ]
         },
         {
           "fichier": "images/17/page17_write.png",
+          "avant": null,
+          "apres": null,
           "textes": [
             {
-              "texte": "write",
-              "avant": null,
-              "apres": null
+              "texte": "write"
             }
           ]
         }
