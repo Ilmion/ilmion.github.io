@@ -950,6 +950,321 @@
           ]
         }
       ]
+    },
+    {
+      "numero": 20,
+      "images": [
+        {
+          "fichier": "images/20/page20_bend.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "bend"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_carry.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "carry"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_catch.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "catch"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_climb.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "climb"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_crawl.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "crawl"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_crouch.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "crouch"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_dig.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "dig"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_dive.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "dive"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_drag.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "drag"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_hit.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "hit"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_hold.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "hold"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_hop.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "hop"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_jump.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "jump"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_kick.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "kick"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_kneel.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "kneel"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_lean.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "lean"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_leap.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "leap"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_lift.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "lift"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_march.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "march"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_pickup.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "pick up"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_pull.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "pull"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_punch.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "punch"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_push.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "push"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_run.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "run"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_sit.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "sit"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_skip.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "skip"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_squat.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "squat"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_strech.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "strech"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_throw.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "throw"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_tiptoe.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "tip toe"
+            }
+          ]
+        },
+        {
+          "fichier": "images/20/page20_walk.png",
+          "avant": null,
+          "apres": null,
+          "textes": [
+            {
+              "texte": "walk"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
